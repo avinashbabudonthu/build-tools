@@ -4,7 +4,6 @@
 * compile
 	* This is maven default scope
 	* Dependencies with compile scope are needed to build, test, and run the project
-	
 ```
 <dependencies>
     <dependency>
