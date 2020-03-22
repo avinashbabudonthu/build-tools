@@ -1,24 +1,6 @@
 # Maven Notes
 
 ## Maven dependency scopes
-<details>
-	<summary>compile</summary>
-	<p>
-* This is maven default scope
-	* Dependencies with compile scope are needed to build, test, and run the project
-```
-<dependencies>
-    <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>1.2.14</version>
-        <!-- You can ommit this because it is default -->
-        <scope>compile</scope>
-    </dependency>
-</dependencies>
-```	
-	</p>
-</details>
 * compile
 	* This is maven default scope
 	* Dependencies with compile scope are needed to build, test, and run the project
