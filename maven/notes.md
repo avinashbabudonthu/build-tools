@@ -87,3 +87,43 @@ compile				  | compile			| 	 			  | runtime			|
 provided			  | provided		| 	 			  | provided		| 
 runtime				  | runtime			| 	 			  | runtime			| 
 test				  | test			| 	 			  | test			|
+
+## Maven Pull from remote repository - repositories tag
+```
+<repositories>
+    <repository>
+        <id>browserid-snapshots</id>
+        <name>browserid-snapshots</name>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+</repositories>
+```
+
+## Maven Push to remote repository - distributionManagement tag
+```
+<distributionManagement>
+    <repository>
+      <id>operative-releases</id>
+      <name>Operative Releases Repository</name>
+      <url>${operative.nexus}/repositories/operative-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>operative-snapshots</id>
+      <name>Operative Snapshots Repository</name>
+      <url>${operative.nexus}/repositories/operative-snapshots</url>
+    </snapshotRepository>
+    <site>
+      <id>operative-mavensite</id>
+      <name>Operative Maven WebSite</name>
+      <url>operative-global</url>
+    </site>
+  </distributionManagement>
+```
+
+## Maven Spring Boot Plugin
+```
+<plugin>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+</plugin>
+```
