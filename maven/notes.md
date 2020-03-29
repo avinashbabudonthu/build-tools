@@ -127,3 +127,25 @@ test				  | test			| 	 			  | test			|
 	<artifactId>spring-boot-maven-plugin</artifactId>
 </plugin>
 ```
+
+## Maven Executive Exec Plugin
+* Add `exec-maven-plugin` plugin under `build/plugins` in `pom.xml`
+* Configure full packaged class name of main class in the plugin
+* Execute main program using command: `mvn exec:java`
+```
+<plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>exec-maven-plugin</artifactId>
+	<version>1.6.0</version>
+	<configuration>
+	  <mainClass>com.test.MainAppClassName</mainClass>
+	  <executable>java</executable>
+	  <arguments>
+		<argument>-Xms1024M</argument>
+		<argument>-Xmx1024M</argument>
+		<argument>-cp</argument>
+		<classpath/>
+	  </arguments>
+	</configuration>
+ </plugin>
+```
