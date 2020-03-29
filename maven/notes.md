@@ -149,3 +149,24 @@ test				  | test			| 	 			  | test			|
 	</configuration>
  </plugin>
 ```
+
+## Maven compile plugin
+```
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>3.8.1</version>
+	<configuration>
+		<source>1.8</source>
+		<target>1.8</target>
+		<meminitial>128m</meminitial>
+		<maxmem>512m</maxmem>
+		<showDeprecation>true</showDeprecation>
+		<showWarnings>true</showWarnings>
+		<encoding>UTF-8</encoding>
+		<verbose>true</verbose>
+		<compilerArgument>-Xlint:all</compilerArgument>
+		<compilerArgument>-parameters</compilerArgument>
+	</configuration>
+</plugin>
+```
