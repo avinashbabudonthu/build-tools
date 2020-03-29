@@ -128,7 +128,7 @@ test				  | test			| 	 			  | test			|
 </plugin>
 ```
 
-## Maven Executive Exec Plugin
+## Maven Execute Exec Plugin
 * Add `exec-maven-plugin` plugin under `build/plugins` in `pom.xml`
 * Configure full packaged class name of main class in the plugin
 * Execute main program using command: `mvn exec:java`
