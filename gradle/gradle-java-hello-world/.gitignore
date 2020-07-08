@@ -93,3 +93,6 @@ build
 *.iml
 /.gradle/
 */.gradle/*
+/gradle/
+*/gradle/*
+gradle
