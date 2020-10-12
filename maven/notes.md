@@ -711,11 +711,11 @@ mvn clean test -Dtest=<test-class-name>
 ```
 * Creating java project using maven archetype plugin
 ```
-mvn archetype:generate -DgroupId=com.javaprep -DartifactId=mavenHelloWorld -DarchetypArtifactId=maven-archetype-quickstart -DintetactiveMode=false
+mvn archetype:generate -DgroupId=com.test -DartifactId=maven-hello-world -DarchetypArtifactId=maven-archetype-quickstart -DintetactiveMode=false
 ```
 * Create web project using maven archetype plugin
 ```
-mvn archetype:generate -DgroupId=com.test -DartifactId=TestWebApp -Dpackage=com.example -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.test -DartifactId=test-web-app -Dpackage=com.example -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
 ```
 * Create jersey implemented web application using maven archetype plug in
 ```
