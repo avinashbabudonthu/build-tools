@@ -14,15 +14,15 @@
 	* Releases
 	* Distribution
 	* Mailing list
-* Maven Overview
+* Maven Overview\
 ![picture](images/maven-overview.png)
 * POM
 	* Project Object Model
 	* It always resides in the base directory of the project
 	* Name of the file `pom.xml`
-* Group Id, Artifact Id, Version - Explanation
+* Group Id, Artifact Id, Version - Explanation\
 ![picture](images/groupId_artifactId_version.jpg)
-* Default values in pom
+* Default values in pom\
 ![picture](images/default_values_in_pom.jpg)
 * goal or task
 	* Specific tasks used in building and managing the project
