@@ -5,7 +5,6 @@ echo %cd%
 echo -----------------------------------------------
 git status
 git add .
-set /p commitMessage=Enter Commit Message: 
-git commit -m "%commitMessage%"
+git commit -m "one place %date% %time%"
 git push
 pause
