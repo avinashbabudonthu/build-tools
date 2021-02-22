@@ -563,6 +563,7 @@ test				  | test			| 	 			  | test			|
 ```
 
 ## Maven compile plugin
+* For Java 8
 ```
 <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
@@ -580,6 +581,57 @@ test				  | test			| 	 			  | test			|
 		<compilerArgument>-Xlint:all</compilerArgument>
 		<compilerArgument>-parameters</compilerArgument>
 	</configuration>
+</plugin>
+```
+* For Java 11. Reference - [https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/](https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/)
+* In order to compile your project for Java 11 add the `release` configuration to the compiler plugin
+* New compiler parameter to replace the `source` and `target` version parameters
+* Don't forget to set your IDEs project SDK to same JDK version
+```
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>3.8.0</version>
+	<configuration>
+		<release>11</release>
+	</configuration>
+</plugin>
+```
+
+## maven-surefire-plugin
+* Java 11 - surefire plugin we add an additional argument `--illegal-access=permit` to allow all reflection access for third party libraries
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.0</version>
+    <configuration>
+        <argLine>
+            --illegal-access=permit
+        </argLine>
+    </configuration>
+</plugin>
+```
+* This is only needed if your dependencies make heavy use of reflection. If you're unsure whether you need this you can add the `argLine` later if your tests run into trouble.
+* You'll see warnings like this when a library tries to illegally access classes via setAccessible(true)
+```
+WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.reflection.CachedClass
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+```
+
+## maven-failsafe-plugin
+* Java 11 - failsafe plugins we add an additional argument `--illegal-access=permit` to allow all reflection access for third party libraries
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-failsafe-plugin</artifactId>
+    <version>2.22.0</version>
+    <configuration>
+        <argLine>
+            --illegal-access=permit
+        </argLine>
+    </configuration>
 </plugin>
 ```
 
@@ -637,6 +689,25 @@ mvn install -Dmaven.test.skip=true
   [...]
 </project>
 ```
+
+## Maven version plugin
+* This plugin helps finding the latest plugin or dependency versions for your modules
+```
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>versions-maven-plugin</artifactId>
+    <version>2.5</version>
+    <configuration>
+        <generateBackupPoms>false</generateBackupPoms>
+    </configuration>
+</plugin>
+```
+* Open up the terminal and execute this command to find the plugin versions you have to update
+```
+mvn versions:display-plugin-updates
+```
+* You will see a list of plugins used in your project with newer versions available. Update all of those plugins to the lastest stable version. After you've updated your plugin versions make sure that your project still compiles and runs properly
+* Use mvn -N ... from your projects root directory to just check your parent POM in case of multi-module projects.
 
 ## Maven Commands
 * Maven version
@@ -726,3 +797,11 @@ mvn archetype:generate -DgroupId=com.example -DartifactId=simple-service-webapp 
 mvn site
 ```
 ![picture](images/creating_pjt_documentation.jpg)
+* find outdated dependency versions from your modules
+```
+mvn versions:display-dependency-updates
+```
+* Compile test cases
+```
+mvn test-compile
+```
